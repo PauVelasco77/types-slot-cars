@@ -15,9 +15,9 @@
   "scripts": {
     "build": "bun run tsc",
     "release": "standard-version",
-    "publish:patch": "bun run build && npm version patch && bun run release && npm publish",
-    "publish:minor": "bun run build && npm version minor && bun run release && npm publish",
-    "publish:major": "bun run build && npm version major && bun run release && npm publish"
+    "publish:patch": "bun run build && standard-version --release-as patch && npm publish",
+    "publish:minor": "bun run build && standard-version --release-as minor && npm publish",
+    "publish:major": "bun run build && standard-version --release-as major && npm publish"
   },
   "publishConfig": {
     "access": "public"
