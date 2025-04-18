@@ -1,14 +1,25 @@
 {
   "name": "@types/slot-cars",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "TypeScript definitions and Zod schemas for slot-cars",
-  "types": "index.d.ts",
+  "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "peerDependencies": {
     "zod": "^3.24.3"
   },
   "devDependencies": {
     "typescript": "^5.8.3",
-    "zod": "^3.24.3"
+    "zod": "^3.24.3",
+    "standard-version": "^9.5.0"
+  },
+  "scripts": {
+    "build": "bun run tsc",
+    "release": "standard-version",
+    "publish:patch": "bun run build && npm version patch && bun run release && npm publish",
+    "publish:minor": "bun run build && npm version minor && bun run release && npm publish",
+    "publish:major": "bun run build && npm version major && bun run release && npm publish"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
