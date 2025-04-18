@@ -8,9 +8,9 @@
     "zod": "^3.24.3"
   },
   "devDependencies": {
+    "standard-version": "^9.5.0",
     "typescript": "^5.8.3",
-    "zod": "^3.24.3",
-    "standard-version": "^9.5.0"
+    "zod": "^3.24.3"
   },
   "scripts": {
     "build": "bun run tsc",
