@@ -1,0 +1,14 @@
+{
+  "name": "@types/slot-cars",
+  "version": "1.0.0",
+  "description": "TypeScript definitions and Zod schemas for slot-cars",
+  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "peerDependencies": {
+    "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "zod": "^3.24.3"
+  }
+}
