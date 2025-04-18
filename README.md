@@ -52,26 +52,6 @@ The following Bun scripts are available:
 - `release:minor`: Deploy a minor version.
 - `release:major`: Deploy a major version.
 
-## Development
-
-### Prerequisites
-
-- Bun (v0.5.0 or later)
-
-### Setup
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/types-slot-cars.git
-   cd types-slot-cars
-   ```
-
-2. Install dependencies:
-   ```bash
-   bun install
-   ```
-
-
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
