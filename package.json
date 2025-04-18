@@ -1,5 +1,5 @@
 {
-  "name": "@types/slot-cars",
+  "name": "types-slot-cars",
   "version": "0.0.0",
   "description": "TypeScript definitions and Zod schemas for slot-cars",
   "types": "dist/index.d.ts",

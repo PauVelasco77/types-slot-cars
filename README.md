@@ -13,7 +13,7 @@ A TypeScript package for managing and working with slot car data.
 Install the package using Bun:
 
 ```bash
-bun add @types/slot-cars
+bun add types-slot-cars
 ```
 
 ## Usage
