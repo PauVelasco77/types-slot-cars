@@ -4,6 +4,16 @@
   "description": "TypeScript definitions and Zod schemas for slot-cars",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
   "peerDependencies": {
     "zod": "^3.24.3"
   },
