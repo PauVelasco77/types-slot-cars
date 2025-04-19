@@ -1,6 +1,6 @@
 {
   "name": "types-slot-cars",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "TypeScript definitions and Zod schemas for slot-cars",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
