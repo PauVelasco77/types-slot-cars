@@ -3,7 +3,7 @@ import {CATEGORIES} from "./category";
 
 type PerspectiveType = "front" | "rear" | "left" | "right" | "front_left" | "front_right" | "rear_left" | "rear_right";
 
-const SCALES = {"1:24": "1:24", "1:32": "1:32"};
+const SCALES = {"1_24": "1:24", "1_32": "1:32"};
 
 const PerspectiveSchema = z.object({
   front: z.string().url().optional(),
