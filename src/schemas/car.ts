@@ -35,6 +35,8 @@ const CarSchema = z.object({
     renders: PerspectiveSchema,
     draw: PerspectiveSchema,
     real: PerspectiveSchema,
+    scenary: z.array(z.string().url()).optional(),
+    other: z.array(z.string().url()).optional(),
   }),
   category: z.array(z.nativeEnum(CATEGORIES)).nonempty(),
 });
