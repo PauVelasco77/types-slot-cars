@@ -5,6 +5,20 @@ type PerspectiveType = "front" | "rear" | "left" | "right" | "front_left" | "fro
 
 const SCALES = {"1:24": "1:24", "1:32": "1:32"};
 
+const PerspectiveSchema = z.object({
+  front: z.string().url().optional(),
+  rear: z.string().url().optional(),
+  left: z.string().url().optional(),
+  right: z.string().url().optional(),
+  front_left: z.string().url().optional(),
+  front_right: z.string().url().optional(),
+  rear_left: z.string().url().optional(),
+  rear_right: z.string().url().optional(),
+  others: z.array(z.string().url()).optional(),
+});
+
+type ImageType = "perspective" | "flat" | "renders" | "draw" | "real";
+
 const CarSchema = z.object({
   id: z.string().uuid(),
   name: z.string(),
@@ -16,67 +30,18 @@ const CarSchema = z.object({
   reference: z.string(),
   scale: z.nativeEnum(SCALES),
   images: z.object({
-    perspective: z.object({
-      front: z.string().url().optional(),
-      rear: z.string().url().optional(),
-      left: z.string().url().optional(),
-      right: z.string().url().optional(),
-      front_left: z.string().url().optional(),
-      front_right: z.string().url().optional(),
-      rear_left: z.string().url().optional(),
-      rear_right: z.string().url().optional(),
-      others: z.array(z.string().url()).optional(),
-    }),
-    flat: z.object({
-      front: z.string().url().optional(),
-      rear: z.string().url().optional(),
-      left: z.string().url().optional(),
-      right: z.string().url().optional(),
-      front_left: z.string().url().optional(),
-      front_right: z.string().url().optional(),
-      rear_left: z.string().url().optional(),
-      rear_right: z.string().url().optional(),
-      others: z.array(z.string().url()).optional(),
-    }),
-    renders: z.object({
-      front: z.string().url().optional(),
-      rear: z.string().url().optional(),
-      left: z.string().url().optional(),
-      right: z.string().url().optional(),
-      front_left: z.string().url().optional(),
-      front_right: z.string().url().optional(),
-      rear_left: z.string().url().optional(),
-      rear_right: z.string().url().optional(),
-      others: z.array(z.string().url()).optional(),
-    }),
-    draw: z.object({
-      front: z.string().url().optional(),
-      rear: z.string().url().optional(),
-      left: z.string().url().optional(),
-      right: z.string().url().optional(),
-      front_left: z.string().url().optional(),
-      front_right: z.string().url().optional(),
-      rear_left: z.string().url().optional(),
-      rear_right: z.string().url().optional(),
-      others: z.array(z.string().url()).optional(),
-    }),
-    real: z.object({
-      front: z.string().url().optional(),
-      rear: z.string().url().optional(),
-      left: z.string().url().optional(),
-      right: z.string().url().optional(),
-      front_left: z.string().url().optional(),
-      front_right: z.string().url().optional(),
-      rear_left: z.string().url().optional(),
-      rear_right: z.string().url().optional(),
-      others: z.array(z.string().url()).optional(),
-    }),
+    perspective: PerspectiveSchema,
+    flat: PerspectiveSchema,
+    renders: PerspectiveSchema,
+    draw: PerspectiveSchema,
+    real: PerspectiveSchema,
   }),
   category: z.array(z.nativeEnum(CATEGORIES)).nonempty(),
 });
 
 type Car = z.infer<typeof CarSchema>;
 type Scale = keyof typeof SCALES;
+type Perspective = z.infer<typeof PerspectiveSchema>;
 
-export type {Scale, Car};
-export {CarSchema};
+export type {Scale, Car, PerspectiveType, ImageType, Perspective};
+export {CarSchema, PerspectiveSchema};
