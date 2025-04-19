@@ -26,9 +26,10 @@
     "build": "bun run tsc",
     "release": "standard-version",
     "check-main-branch": "bash -c 'CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD) && if [ \"$CURRENT_BRANCH\" != \"main\" ]; then echo \"Error: Not on main branch. Please switch to main branch.\"; exit 1; fi'",
-    "publish:patch": "npm run check-main-branch && bun run build && standard-version --release-as patch && npm publish",
-    "publish:minor": "npm run check-main-branch && bun run build && standard-version --release-as minor && npm publish",
-    "publish:major": "npm run check-main-branch && bun run build && standard-version --release-as major && npm publish"
+    "typecheck": "bun run tsc -- --noEmit",
+    "publish:patch": "npm run check-main-branch && bun run typecheck && bun run build && standard-version --release-as patch && npm publish",
+    "publish:minor": "npm run check-main-branch && bun run typecheck && bun run build && standard-version --release-as minor && npm publish",
+    "publish:major": "npm run check-main-branch && bun run typecheck && bun run build && standard-version --release-as major && npm publish"
   },
   "publishConfig": {
     "access": "public"
