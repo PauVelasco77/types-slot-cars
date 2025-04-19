@@ -1,19 +1,23 @@
 import {z} from "zod";
 import {CATEGORIES} from "./category";
 
-type PerspectiveType =
-  | "diagonal_front_left"
-  | "diagonal_front_right"
-  | "diagonal_rear_left"
-  | "diagonal_rear_right"
-  | "front"
-  | "rear"
-  | "left"
-  | "right";
+type PerspectiveType = "front" | "rear" | "left" | "right" | "front_left" | "front_right" | "rear_left" | "rear_right";
 
-type ImageViewType = "perspective" | "flat";
+const SCALES = {"1_24": "1:24", "1_32": "1:32"};
 
-const SCALES = {"1:24": "1:24", "1:32": "1:32"};
+const PerspectiveSchema = z.object({
+  front: z.string().url().optional(),
+  rear: z.string().url().optional(),
+  left: z.string().url().optional(),
+  right: z.string().url().optional(),
+  front_left: z.string().url().optional(),
+  front_right: z.string().url().optional(),
+  rear_left: z.string().url().optional(),
+  rear_right: z.string().url().optional(),
+  others: z.array(z.string().url()).optional(),
+});
+
+type ImageType = "perspective" | "flat" | "renders" | "draw" | "real";
 
 const CarSchema = z.object({
   id: z.string().uuid(),
@@ -26,29 +30,18 @@ const CarSchema = z.object({
   reference: z.string(),
   scale: z.nativeEnum(SCALES),
   images: z.object({
-    perspective_diagonal_front_left: z.string().url().optional(),
-    perspective_diagonal_front_right: z.string().url().optional(),
-    perspective_diagonal_rear_left: z.string().url().optional(),
-    perspective_diagonal_rear_right: z.string().url().optional(),
-    perspective_front: z.string().url().optional(),
-    perspective_rear: z.string().url().optional(),
-    perspective_left: z.string().url().optional(),
-    perspective_right: z.string().url().optional(),
-    flat_diagonal_front_left: z.string().url().optional(),
-    flat_diagonal_front_right: z.string().url().optional(),
-    flat_diagonal_rear_left: z.string().url().optional(),
-    flat_diagonal_rear_right: z.string().url().optional(),
-    flat_front: z.string().url().optional(),
-    flat_rear: z.string().url().optional(),
-    flat_left: z.string().url().optional(),
-    flat_right: z.string().url().optional(),
+    perspective: PerspectiveSchema,
+    flat: PerspectiveSchema,
+    renders: PerspectiveSchema,
+    draw: PerspectiveSchema,
+    real: PerspectiveSchema,
   }),
   category: z.array(z.nativeEnum(CATEGORIES)).nonempty(),
 });
 
-type ImageKey = `${ImageViewType}_${PerspectiveType}`;
 type Car = z.infer<typeof CarSchema>;
 type Scale = keyof typeof SCALES;
+type Perspective = z.infer<typeof PerspectiveSchema>;
 
-export type {Scale, Car, ImageKey};
-export {CarSchema};
+export type {Scale, Car, PerspectiveType, ImageType, Perspective};
+export {CarSchema, PerspectiveSchema};
