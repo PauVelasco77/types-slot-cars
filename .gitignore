@@ -15,7 +15,8 @@ build/
 .env.local
 
 # IDE settings
-.vscode/
+.vscode/*
+!.vscode/settings.json
 .idea/
 
 # OS-specific files

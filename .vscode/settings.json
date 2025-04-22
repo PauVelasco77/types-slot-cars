@@ -1,0 +1,16 @@
+{
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+    {
+      "text": "Use conventional commit message format with type prefix."
+    },
+    {
+      "text": "Always start commit messages with fix:, feat:, docs:, style:, refactor:, perf:, test:, build:, ci: or chore: followed by a space."
+    },
+    {
+      "text": "Use imperative mood for the message part."
+    },
+    {
+      "text": "Do not capitalize the first letter of the message part after the prefix."
+    }
+  ]
+}
